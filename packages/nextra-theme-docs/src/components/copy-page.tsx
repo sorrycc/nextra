@@ -68,6 +68,17 @@ export const CopyPage: FC<{ sourceCode: string }> = ({ sourceCode }) => {
             )
           },
           {
+            id: 'markdown',
+            name: (
+              <Item
+                icon={LinkArrowIcon}
+                title="Open Markdown"
+                description="Open page source in Markdown format"
+                isExternal
+              />
+            )
+          },
+          {
             id: 'chatgpt',
             name: (
               <Item
@@ -95,6 +106,10 @@ export const CopyPage: FC<{ sourceCode: string }> = ({ sourceCode }) => {
         onChange={value => {
           if (value === 'copy') {
             handleCopy()
+            return
+          }
+          if (value === 'markdown') {
+            window.open(`${location.href}.md`, '_blank')
             return
           }
           const url =
